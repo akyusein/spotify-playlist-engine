@@ -21,15 +21,16 @@ class SpotifyConfig:
         track_uris = []
         for index, value in collected_info.items():
             search_params = {
-                "q": f"track:{value}, artist:{index}",
+                "q": f"{index}, {value}",
                 "type": "track",
                 "market": "ES",
                 "limit": 1,
+                "offset": 0
             }
             next_response = requests.get(url=self.search_endpoint, params=search_params, headers=self.set_up_auth())
             if data := next_response.json()["tracks"]["items"]:
                 for track in data:
-                    track_uris.append(f'spotify:track:{track["id"]}')
+                    track_uris.append(track["uri"])
         return track_uris
 
     def create_playlist(self, uris, user_input):
