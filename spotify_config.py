@@ -35,6 +35,7 @@ class SpotifyConfig:
     def create_playlist(self, uris, user_input):
         playlist_params = {
             "name": f"Billboard Top 100 {user_input}",
+            "description": "Billboard Top 100 Songs For This Date!",
             "public": False
         }
 
