@@ -14,7 +14,7 @@ class SpotifyConfig:
         track_uris = []
         for index, value in collected_info.items():
             search_params = {
-                "q": f"{index}, {value}",
+                "q": f"{index} {value}",
                 "type": "track",
                 "market": "ES",
                 "limit": 1,
